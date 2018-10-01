@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+ http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
+
+    <persistence-unit name="apurbo" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <!--<property name="hibernate.hbm2ddl.auto" value="validate"/>-->
+            <property name="hibernate.show_sql" value="true"/>
+        </properties>
+        <class>com.ems.Entity.HomeEntity</class>
+        <class>com.ems.Entity.ems.BaseEntity.BaseEntity</class>
+        <class>com.ems.Entity.ems.PersonalInformationEntity</class>
+        <class>com.ems.Entity.ems.GenderSetup</class>
+        <class>com.ems.Entity.ems.EmployeeTypeSetup</class>
+        <class>com.ems.Entity.ems.MaritalStatusSetup</class>
+        <class>com.ems.Entity.ems.EmployeeEducationDetailsSetup</class>
+        <class>com.ems.Entity.Login</class>
+
+    </persistence-unit>
+
+</persistence>

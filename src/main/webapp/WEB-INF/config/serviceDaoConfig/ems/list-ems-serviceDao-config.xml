@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <import resource="prsnlInfo-service-dao-config.xml"/>
+    <import resource="gndr-service-dao-config.xml"/>
+    <import resource="empType-service-dao-config.xml"/>
+    <import resource="mrtl-service-dao-config.xml"/>
+    <import resource="empDisg-service-dao-config.xml"/>
+    <import resource="deptSetup-service-dao-config.xml"/>
+    <import resource="empWH-service-dao-config.xml"/>
+    <import resource="empEdu-service-dao-config.xml"/>
+</beans>

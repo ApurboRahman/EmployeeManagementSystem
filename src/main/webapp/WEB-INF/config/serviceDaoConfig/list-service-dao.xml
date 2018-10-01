@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="listService" class="com.ems.Service.ListService">
+        <property name="listDao" ref="listDao"/>
+        <property name="homeDao" ref="homeDao"/>
+    </bean>
+    <bean id="listDao" class="com.ems.Dao.ListDao" parent="baseDao"/>
+</beans>

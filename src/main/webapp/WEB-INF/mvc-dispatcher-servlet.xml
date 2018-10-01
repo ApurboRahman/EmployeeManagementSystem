@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+    <!-- Enables the Spring MVC @Controller programming model -->
+
+
+    <context:component-scan base-package="com.ems"/>
+
+
+    <mvc:default-servlet-handler/>
+
+    <!-- this is for css, js file and will here always-->
+    <mvc:annotation-driven/>
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <!-- this is for css, js file END here -->
+
+    <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+        <property name="order" value="1"/>
+    </bean>
+    <!-- controller config start here -->
+    <bean id="homeController" class="com.ems.controller.HomeController">
+        <property name="homeService" ref="homeService"/>
+    </bean>
+    <!-- controller config END here -->
+
+    <!-- Service and Dao config start here -->
+    <bean id="homeService" class="com.ems.Service.HomeService">
+        <property name="homeDao" ref="homeDao"/>
+
+    </bean>
+
+    <bean id="homeDao" class="com.ems.Dao.HomeDao" parent="baseDao">
+
+        <!-- Service and Dao config END here -->
+
+    </bean>
+
+
+    <import resource="config/controllerConfig/ems/list-of-controller-config.xml"/>
+
+    <import resource="config/controllerConfig/controllerConfigList.xml"/>
+    <import resource="config/dataConfig/data-context.xml"/>
+    <import resource="config/dataConfig/connection-string.xml"/>
+    <import resource="config/spring-security.xml"/>
+    <import resource="config/globalConfig/global-context.xml"/>
+
+    <!--Service Dao configuration List-->
+    <import resource="config/serviceDaoConfig/serviceDaoConfigList.xml"/>
+    <import resource="config/serviceDaoConfig/ems/list-ems-serviceDao-config.xml"/>
+
+
+
+</beans>

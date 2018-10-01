@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="dataSource" class="com.ems.DBConnection.DataSource">
+        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+
+        <!--<property name="url" value="jdbc:sqlserver://APURBO:1433;databaseName=Apurbo"/>-->
+        <property name="url" value="jdbc:sqlserver://127.0.0.1:1433;databaseName=ems"/>
+        <!--  <property name="url" value="jdbc:sqlservr://APURBO-PC\APURBO\SQLSERVER2014;DatabaseName=apurbo"/>-->
+        <property name="username" value="sa"/>
+        <property name="password" value="sa1234"/>
+    </bean>
+</beans>

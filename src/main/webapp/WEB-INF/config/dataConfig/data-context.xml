@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx.xsd
+http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+
+    <bean id="emFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="persistenceUnitName" value="apurbo"/>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.dialect">com.ems.DBConnection.SQLServer2012CustomDialect</prop>
+            </props>
+        </property>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="txManager"/>
+    <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="emFactory"/>
+    </bean>
+
+    <bean id="persistenceExceptionTranslationPostProcessor"
+          class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+
+    <bean id="queryPros" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="singleton" value="true"/>
+        <property name="locations">
+            <list>
+                <!--<value>classpath*:/META-INF/mssqlFile/*.sql</value>-->
+
+                <value>classpath*:/mssqlFile/mssqlFile/HomeDao.mssql.sql</value>
+                <value>classpath*:/mssqlFile/mssqlFile/ListDao.mssql.sql</value>
+                <value>classpath*:/mssqlFile/mssqlFile/emsMssqlFile/personalInformation.mssql.sql</value>
+                <value>classpath*:/mssqlFile/mssqlFile/emsMssqlFile/genderSetup.mssql.sql</value>
+                <value>classpath*:/mssqlFile/mssqlFile/emsMssqlFile/employeeTypeSetup.mssql.sql</value>
+                <value>classpath*:/mssqlFile/mssqlFile/emsMssqlFile/maritalStatusSetup.mssql.sql</value>
+                <value>classpath*:/mssqlFile/mssqlFile/emsMssqlFile/employeeDesignationSetup.mssql.sql</value>
+                <value>classpath*:/mssqlFile/mssqlFile/emsMssqlFile/employeeEducationDetailsSetup.mssql.sql</value>
+                <value>classpath*:/mssqlFile/mssqlFile/Login.mssql.sql</value>
+            </list>
+        </property>
+    </bean>
+
+
+</beans>

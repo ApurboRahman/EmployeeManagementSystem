@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="personalInformationService" class="com.ems.Service.ems.PersonalInformationService">
+        <property name="personalInformationDAO" ref="personalInformationDao"/>
+    </bean>
+    <bean id="personalInformationDao" class="com.ems.Dao.ems.PersonalInformationDAO" parent="baseDao"></bean>
+</beans>

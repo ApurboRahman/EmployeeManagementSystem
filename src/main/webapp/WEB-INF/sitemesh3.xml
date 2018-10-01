@@ -1,0 +1,10 @@
+<sitemesh>
+   <!-- <mapping path="/loginSuccess" decorator="/WEB-INF/views/login-layout.jsp"/>-->
+    <mapping path="/*" decorator="/WEB-INF/views/layout.jsp"/>
+    <mapping path="/employeeDesignationSetupReport/*"/>
+
+ <!--   <mapping path="/*" decorator="/WEB-INF/views/layout.jsp"/>-->
+
+
+
+</sitemesh>
